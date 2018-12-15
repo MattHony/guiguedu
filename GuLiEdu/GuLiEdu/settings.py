@@ -41,12 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'courses.apps.CoursesConfig',
+    'operations.apps.OperationsConfig',
+    'orgs.apps.OrgsConfig',
     'xadmin',
     'crispy_forms',
     'reversion',
-    'courses',
-    'operations',
-    'orgs',
 ]
 
 # 继承关系 解决冲突
@@ -105,8 +105,7 @@ DATABASES = {
         # 'HOST': '192.168.43.105',
         'HOST': 'localhost',
         'PORT': '3306',
-        'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB,'
-                                    'character_set_connection=utf8,collation_connection=utf8_unicode_ci;'}
+
     }
 }
 
