@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
+    'captcha',
 ]
 
 # 继承关系 解决冲突

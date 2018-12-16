@@ -23,8 +23,6 @@ import xadmin
 from users.views import index
 # xadmin.autodiscover()
 
-# from xadmin.plugins import xversion
-# xversion.register_models()
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -37,6 +35,7 @@ urlpatterns = [
     url(r'^courses/', include(('courses.urls', 'courses'), namespace='courses')),
     url(r'^operations/', include(('operations.urls', 'operations'), namespace='operations')),
     url(r'^orgs/', include(('orgs.urls', 'orgs'), namespace='orgs')),
-    url(r'^$', index, name='index')
+    url(r'^$', index, name='index'),
+    url(r'^captcha/', include('captcha.urls')),
 ]
 

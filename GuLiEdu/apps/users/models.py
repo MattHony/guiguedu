@@ -13,6 +13,8 @@ class UserProfile(AbstractUser):
     birthday = models.DateTimeField(verbose_name='用户生日', null=True, blank=True)
     gender = models.CharField(choices=(('girl', '女'), ('boy', '男')), max_length=10, verbose_name='用户性别', default='girl')
     address = models.CharField(max_length=120, verbose_name='用户地址', null=True, blank=True)
+    # 控制激活
+    is_start = models.BooleanField(default=False, verbose_name='是否激活')
     phone = models.CharField(max_length=11, verbose_name='手机号码', null=True, blank=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
