@@ -42,7 +42,7 @@ class BannerInfo(models.Model):
 class EmailVerifyCode(models.Model):
     code = models.CharField(max_length=20, verbose_name="邮箱验证码")
     email = models.EmailField(max_length=200, verbose_name="验证用户邮箱")
-    send_type = models.ImageField(choices=(
+    send_type = models.IntegerField(choices=(
         (1, 'register'),
         (2, 'forget'),
         (3, 'change')), verbose_name="验证类型")

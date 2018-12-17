@@ -14,7 +14,8 @@
 - GET
 
 **参数：**
-
+**验证码:**
+ - ``` pip install django-simple-captcha```
 
 
 **requirements.txt:**

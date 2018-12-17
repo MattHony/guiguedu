@@ -17,9 +17,15 @@ from django.conf.urls import url
 from .views import user_register
 from .views import user_login
 from .views import user_logout
+from .views import user_active
+from .views import user_forget
+from .views import user_reset
 
 urlpatterns = [
         url(r'^user_register/$', user_register, name='user_register'),
         url(r'^user_login/$', user_login, name='user_login'),
         url(r'^user_logout/$', user_logout, name='user_logout'),
+        url(r'^user_active/(\w+)/$', user_active, name='user_active'),
+        url(r'^user_forget/$', user_forget, name='user_forget'),
+        url(r'^user_reset/(\w+)/$', user_reset, name='user_reset'),
 ]

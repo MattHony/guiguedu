@@ -157,3 +157,14 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/static/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
+
+# 163邮箱配置
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+# EMAIL_HOST_USER = 'ly03171629@163.com'
+# EMAIL_HOST_PASSWORD = 'liuyuan1987729'
+# EMAIL_FROM = 'ly03171629@163.com'
+EMAIL_HOST_USER = 'shouwen12306@163.com'
+EMAIL_HOST_PASSWORD = 'wen1993'
+EMAIL_FROM = 'shouwen12306@163.com'
