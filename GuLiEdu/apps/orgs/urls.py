@@ -17,16 +17,9 @@ Including another URLconf
 from django.conf.urls import url
 # from django.contrib import admin
 # from django.urls import path, include
+from .views import org_list
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # # re_path('^', include('users.urls', namespace='users')),
-    # # re_path('^', include('courses.urls', namespace='courses')),
-    # # re_path('^', include('operations.urls', namespace='operations')),
-    # # re_path('^', include('orgs.urls', namespace='orgs')),
-    # url(r'^users/', include('users.urls', namespace='users')),
-    # url(r'^courses/', include('courses.urls', namespace='courses')),
-    # url(r'^operations/', include('operations.urls', namespace='operations')),
-    # url(r'^orgs/', include('orgs.urls', namespace='orgs')),
+    url(r'^org_list/$', org_list, name='org_list'),
 ]
 
