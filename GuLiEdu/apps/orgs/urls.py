@@ -18,8 +18,12 @@ from django.conf.urls import url
 # from django.contrib import admin
 # from django.urls import path, include
 from .views import org_list
+from .views import org_detail
+from .views import org_detail_course
 
 urlpatterns = [
     url(r'^org_list/$', org_list, name='org_list'),
+    url(r'^org_detail/(\d+)/$', org_detail, name='org_detail'),
+    url(r'^org_detail_course/(\d+)/$', org_detail_course, name='org_detail_course'),
 ]
 

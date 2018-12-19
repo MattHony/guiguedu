@@ -3,8 +3,10 @@
     <words>
       <w>bootswatch</w>
       <w>btns</w>
+      <w>cityid</w>
       <w>cityinfo</w>
       <w>courseinfo</w>
+      <w>csrfmiddlewaretoken</w>
       <w>forgetpwd</w>
       <w>futbol</w>
       <w>guliedu</w>

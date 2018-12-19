@@ -19,13 +19,13 @@
 				<li>
 					<h2>机构类别</h2>
 					<div class="cont">
-                        <a href="?city="><span class="active2">全部</span></a>
+                        <a href="?&cityid={{ cityid }}"><span {% if cate == '' %} class="active2" {% endif %}>全部</span></a>
 
-                            <a href="?ct=pxjg&city="><span class="">培训机构</span></a>
+                            <a href="?cate=train_org&cityid={{ cityid }}&sort={{ sort }}"><span {% if cate == 'train_org' %} class="active2" {% endif %}>培训机构</span></a>
 
-                            <a href="?ct=gx&city="><span class="">高校</span></a>
+                            <a href="?cate=colleges&cityid={{ cityid }}&sort={{ sort }}"><span {% if cate == 'colleges' %} class="active2" {% endif %}>高校</span></a>
 
-                            <a href="?ct=gr&city="><span class="">个人</span></a>
+                            <a href="?cate=person&cityid={{ cityid }}&sort={{ sort }}"><span {% if cate == 'person' %} class="active2" {% endif %}>个人</span></a>
 
 					</div>
 				</li>
@@ -33,10 +33,10 @@
 					<h2>所在地区</h2>
 					<div class="more">更多</div>
 					<div class="cont">
-                        <a href="?ct="><span class="active2">全部</span></a>
+                        <a href="?&cate={{ cate }}"><span {% if cityid == '' %} class="active2" {% endif %}>全部</span></a>
                                 {% for city in all_cities %}
 
-                                <a href="?city=1&ct="><span class="">{{ city.name }}</span></a>
+                                <a href="?cityid={{ city.id }}&cate = {{ cate }}&sort={{ sort }}"><span {% if cityid == city.id|stringformat:"i" %}class="active2"{% endif %}>{{ city.name }}</span></a>
                                 {% endfor %}
 
 					</div>
@@ -48,21 +48,21 @@
 		<div class="layout">
 			<div class="head">
 				<ul class="tab_header">
-					<li class="active"><a href="?ct=&city=">全部</a> </li>
-					<li class=""><a href="?sort=students&ct=&city=">学习人数 &#8595;</a></li>
-					<li class=""><a href="?sort=courses&ct=&city=">课程数 &#8595;</a></li>
+					<li {% if sort == '' %}class="active"{% endif %}><a href="?cate={{ cate }}&cityid={{ cityid }}">全部</a> </li>
+					<li {% if sort == 'learn_num' %}class="active"{% endif %}><a href="?sort=learn_num&cate={{ cate }}&cityid={{ cityid }}">学习人数 &#8595;</a></li>
+					<li {% if sort == 'course_num' %}class="active"{% endif %}><a href="?sort=course_num&cate={{ cate }}&cityid={{ cityid }}">课程数 &#8595;</a></li>
 				</ul>
 			</div>
             {% for org in pages %}
                 <dl class="des difdes">
                     <dt>
-                        <a href="org-detail-homepage.html">
+                        <a href="{% url 'orgs:org_detail' org.id %}">
                             <img width="200" height="120" class="scrollLoading" data-url="{{ MEDIA_URL }} {{ org.image }}"/>
                         </a>
                     </dt>
                     <dd>
                         <div class="clearfix">
-                             <a href="org-detail-homepage.html">
+                             <a href="{% url 'orgs:org_detail' org.id %}">
                                  <h1>{{ org.name }}</h1>
                                  <div class="pic fl">
 
@@ -91,15 +91,15 @@
 		 <div class="pageturn">
             <ul class="pagelist">
                 {% if pages.has_previous %}
-                <li class="long"><a href="?pagenum={{ pages.previous_page_number}}">上一页</a></li>
+                <li class="long"><a href="?pagenum={{ pages.previous_page_number}}&cate={{ cate }}&cityid={{ cityid }}&sort={{ sort }}">上一页</a></li>
                 {% endif %}
 
                 {% for num in pages.paginator.page_range %}
-                <li {% if num == pages.number %}  class="active"{% endif %}><a href="?pagenum={{ num }}">{{ num }}</a></li>
+                <li {% if num == pages.number %}  class="active"{% endif %}><a href="?pagenum={{ num }}&cate={{ cate }}&cityid={{ cityid }}&sort={{ sort }}">{{ num }}</a></li>
                 {% endfor %}
 
                 {% if pages.has_next %}
-                <li class="long"><a href="?pagenum={{ pages.next_page_number }}">下一页</a></li>
+                <li class="long"><a href="?pagenum={{ pages.next_page_number }}&cate={{ cate }}&cityid={{ cityid }}&sort={{ sort }}">下一页</a></li>
                 {% endif %}
 
             </ul>
@@ -110,20 +110,20 @@
 			<div class="head">我要学习</div>
 			<form class="rightform" id="jsStayForm">
 				<div>
-                    <img src="../images/rightform1.png"/>
+                    <img src="{% static 'images/rightform1.png' %}"/>
                     <input type="text" name="name" id="companyName" placeholder="名字" maxlength="25" />
                 </div>
 				<div>
-                    <img src="../images/rightform2.png"/>
+                    <img src="{% static 'images/rightform2.png'%}"/>
                     <input type="text" name="mobile" id="companyMobile" placeholder="联系电话"/>
                 </div>
 				<div>
-                    <img src="../images/rightform3.png"/>
+                    <img src="{% static 'images/rightform3.png'%}"/>
                     <input type="text" name="course_name" id="companyAddress" placeholder="课程名" maxlength="50" />
                 </div>
                 <p class="error company-tips" id="jsCompanyTips"></p>
 				<input class="btn" type="text" id="jsStayBtn" value="立即咨询 >" />
-            <input type='hidden' name='csrfmiddlewaretoken' value='5I2SlleZJOMUX9QbwYLUIAOshdrdpRcy' />
+				{# <input class="btn" type="submit" id="jsStayBtn" value="立即咨询 >" />  #}
             </form>
 		</div>
 
@@ -134,7 +134,7 @@
                 <dl class="des">
                     <dt class="num fl">{{ forloop.counter }}</dt>
                     <dd>
-                        <a href="/company/2/"><h1>{{ org.name }}</h1></a>
+                        <a href="{% url 'orgs:org_detail' org.id %}"><h1>{{ org.name }}</h1></a>
                         <p>{{ org.cityinfo.name }}</p>
                     </dd>
                 </dl>
@@ -147,4 +147,40 @@
 </section>
 {% endblock %}
 
+{% block myjs %}
+    <script>
+        $(function() {
+            $('#jsStayBtn').click(function() {
+                {# text()获取非表单类元素的值 val()获取表单类元素的值 #}
+                var name = $('#companyName').val();
+                var phone = $('#companyMobile').val();
+                var course = $('#companyAddress').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'operations:user_ask' %}',
+                    data: {
+                        "name": name,
+                        "phone": phone,
+                        "course": course,
+                        "csrfmiddlewaretoken": '{{ csrf_token }}'
+                    },
+                    success: function (callback) {
+                        if(callback.status == 'ok') {
+                            alert(callback.msg);
+                            $('#jsCompanyTips').text('')
+                        }else {
+                            alert(callback.msg);
+                            $('#jsCompanyTips').text(callback.msg)
+                        }
+                    }
+
+                });
+                {# 如果提交类型type=submit,则在事件函数的最后返回false,阻止提交动作发生 #}
+                return false;
+            })
+        })
+
+
+    </script>
+{% endblock %}
 
