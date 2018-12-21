@@ -4,7 +4,6 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 
 from .models import OrgInfo
-from .models import TeacherInfo
 from .models import CityInfo
 # Create your views here.
 
@@ -56,6 +55,7 @@ def org_detail(request, org_id):
         org = OrgInfo.objects.filter(id=int(org_id))[0]
         return render(request, 'orgs/org_detail_homepage.html', {
             'org': org,
+            'detail_type': 'home'
         })
 
 
@@ -66,7 +66,7 @@ def org_detail_course(request, org_id):
 
         # 分页
         pagenum = request.GET.get('pagenum', '')
-        pa = Paginator(all_courses, 3)
+        pa = Paginator(all_courses, 2)
         try:
             pages = pa.page(pagenum)
         except PageNotAnInteger:
@@ -76,4 +76,23 @@ def org_detail_course(request, org_id):
         return render(request, 'orgs/org_detail_course.html', {
             'org': org,
             'pages': pages,
+            'detail_type': 'course',
+        })
+
+
+def org_detail_desc(request, org_id):
+    if org_id:
+        org = OrgInfo.objects.filter(id=int(org_id))[0]
+        return render(request, 'orgs/org_detail_desc.html', {
+            'org': org,
+            'detail_type': 'desc',
+        })
+
+
+def org_detail_teacher(request, org_id):
+    if org_id:
+        org = OrgInfo.objects.filter(id=int(org_id))[0]
+        return render(request, 'orgs/org_detail_teachers.html', {
+            'org': org,
+            'detail_type': 'teacher',
         })

@@ -23,8 +23,8 @@
                     <span class="key">5.0</span>
                 </p>
             </div>
-            <div class="btn fr collectionbtn  notlogin
-                 "data-favid="22" data-fav-type="1">
+            <div class="btn fr collectionbtn  notlogin" data-favid="22" data-fav-type="1" id="love">
+
                  收藏
             </div>
 
@@ -46,10 +46,10 @@
 	<div class="wp list personal_list comp">
 		<div class="left">
 			<ul>
-				<li class="active2"><a href="{% url 'orgs:org_detail' org.id %}">机构首页</a></li>
-                <li class=""><a href="{% url 'orgs:org_detail_course' org.id %}">机构课程</a></li>
-                <li class=""><a href="org_detail_desc.html">机构介绍</a></li>
-                <li class=""><a href="org_detail_teachers.html">机构讲师</a></li>
+				<li {% if 'detail_type' == 'home' %}class="active2"{% endif %}><a href="{% url 'orgs:org_detail' org.id %}">机构首页</a></li>
+                <li {% if 'detail_type' == 'home' %}class="active2"{% endif %}><a href="{% url 'orgs:org_detail_course' org.id %}">机构课程</a></li>
+                <li {% if 'detail_type' == 'home' %}class="active2"{% endif %}><a href="{% url 'orgs:org_detail_desc' org.id %}">机构介绍</a></li>
+                <li {% if 'detail_type' == 'home' %}class="active2"{% endif %}><a href="{% url 'orgs:org_detail_teacher' org.id %}">机构讲师</a></li>
 			</ul>
 		</div>
         {% block right %}
@@ -81,6 +81,27 @@
                 };
     $precision.raty(option);
 
+    $('#love').click(function() {
+        var loveid = {{ org.id }};
+        var lovetype = 1;
+        $.ajax({
+            type: 'GET',
+            usl:'{% url 'operations:user_love' %}',
+            data:{
+                loveid: loveid,
+                lovetype: lovetype,
+
+            },
+            success:function (callback) {
+                if(callback.status == 'ok'){
+                    $('#love').text(callback.msg)
+                }else{
+                    alert(callback.msg)
+                }
+
+            }
+        })
+    })
 })
 </script>
     {% block myjs1 %} {% endblock %}

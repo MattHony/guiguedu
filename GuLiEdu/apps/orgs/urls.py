@@ -20,10 +20,14 @@ from django.conf.urls import url
 from .views import org_list
 from .views import org_detail
 from .views import org_detail_course
+from .views import org_detail_desc
+from .views import org_detail_teacher
 
 urlpatterns = [
     url(r'^org_list/$', org_list, name='org_list'),
     url(r'^org_detail/(\d+)/$', org_detail, name='org_detail'),
     url(r'^org_detail_course/(\d+)/$', org_detail_course, name='org_detail_course'),
+    url(r'^org_detail_desc/(\d+)/$', org_detail_desc, name='org_detail_desc'),
+    url(r'^org_detail_teacher/(\d+)/$', org_detail_teacher, name='org_detail_teacher'),
 ]
 
