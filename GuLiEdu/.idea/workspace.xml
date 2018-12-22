@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fc50ee2-845f-457a-b55a-794cf042a5de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/guo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/guo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/courses/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/courses/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/courses/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/courses/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/operations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/operations/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/media/org/mongoDB_QVTOHlu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/media/org/mongoDB_SIkamVn.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/courses/course_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courses/course_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/courses/course_video.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courses/course_video.html" afterDir="false" />
     </list>
@@ -57,14 +49,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/courses/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#631#663#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/courses/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+            <state relative-caret-position="277">
+              <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/courses/course_video.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="135" column="51" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
+              <folding>
+                <element signature="n#section#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/courses/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3">
+              <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -77,6 +102,15 @@
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/courses/course_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="82" column="59" lean-forward="true" selection-start-line="82" selection-start-column="59" selection-end-line="82" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -149,14 +183,14 @@
         <option value="$PROJECT_DIR$/templates/courses/course_list.html" />
         <option value="$PROJECT_DIR$/apps/operations/models.py" />
         <option value="$PROJECT_DIR$/apps/courses/urls.py" />
-        <option value="$PROJECT_DIR$/templates/courses/course_detail.html" />
-        <option value="$PROJECT_DIR$/templates/courses/course_video.html" />
         <option value="$PROJECT_DIR$/apps/courses/views.py" />
         <option value="$PROJECT_DIR$/apps/courses/models.py" />
+        <option value="$PROJECT_DIR$/templates/courses/course_video.html" />
+        <option value="$PROJECT_DIR$/templates/courses/course_detail.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="272" />
     <option name="y" value="67" />
     <option name="width" value="1051" />
@@ -209,6 +243,12 @@
               <item name="GuLiEdu" type="b2602c69:ProjectViewProjectNode" />
               <item name="GuLiEdu" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GuLiEdu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GuLiEdu" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="courses" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -340,22 +380,23 @@
       <workItem from="1545180607299" duration="19832000" />
       <workItem from="1545213550201" duration="10405000" />
       <workItem from="1545284209382" duration="26078000" />
-      <workItem from="1545442505503" duration="1872000" />
+      <workItem from="1545442505503" duration="4573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176750000" />
+    <option name="totallyTimeSpent" value="179451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2122905" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14445332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.58957654" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.58957654" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.6026059" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -365,7 +406,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="11" weight="0.32954547" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.78013027" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.77850163" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32954547" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -550,16 +591,6 @@
     <entry file="file://$PROJECT_DIR$/static/media/org/jQuery.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/courses/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="e#631#663#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/operations/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -581,50 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/courses/course_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-          <folding>
-            <element signature="n#section#0;n#!!top" />
-            <element signature="e#961#967#0#HTML" expanded="true" />
-            <element signature="e#967#973#0#HTML" expanded="true" />
-            <element signature="e#973#979#0#HTML" expanded="true" />
-            <element signature="e#979#985#0#HTML" expanded="true" />
-            <element signature="e#985#991#0#HTML" expanded="true" />
-            <element signature="e#1078#1084#0#HTML" expanded="true" />
-            <element signature="e#1085#1091#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#!!top" expanded="true" />
-            <element signature="e#2480#2486#0#HTML" expanded="true" />
-            <element signature="e#2487#2493#0#HTML" expanded="true" />
-            <element signature="e#2496#2502#0#HTML" expanded="true" />
-            <element signature="e#2502#2508#0#HTML" expanded="true" />
-            <element signature="e#2508#2514#0#HTML" expanded="true" />
-            <element signature="e#2514#2520#0#HTML" expanded="true" />
-            <element signature="e#2520#2526#0#HTML" expanded="true" />
-            <element signature="e#2645#2651#0#HTML" expanded="true" />
-            <element signature="e#2652#2658#0#HTML" expanded="true" />
-            <element signature="e#2661#2667#0#HTML" expanded="true" />
-            <element signature="e#2667#2673#0#HTML" expanded="true" />
-            <element signature="e#2673#2679#0#HTML" expanded="true" />
-            <element signature="e#2679#2685#0#HTML" expanded="true" />
-            <element signature="e#2685#2691#0#HTML" expanded="true" />
-            <element signature="e#2752#2758#0#HTML" expanded="true" />
-            <element signature="e#2758#2764#0#HTML" expanded="true" />
-            <element signature="e#2785#2791#0#HTML" expanded="true" />
-            <element signature="e#2791#2797#0#HTML" expanded="true" />
-            <element signature="e#2797#2803#0#HTML" expanded="true" />
-            <element signature="e#2803#2809#0#HTML" expanded="true" />
-            <element signature="e#2809#2815#0#HTML" expanded="true" />
-            <element signature="e#2815#2821#0#HTML" expanded="true" />
-            <element signature="e#2821#2827#0#HTML" expanded="true" />
-            <element signature="e#2828#2834#0#HTML" expanded="true" />
-            <element signature="e#2868#2874#0#HTML" expanded="true" />
-            <element signature="e#2874#2880#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/orgs/org_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -640,20 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1520">
           <caret line="80" column="96" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/courses/course_video.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="153" column="53" selection-start-line="153" selection-start-column="53" selection-end-line="153" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/courses/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -706,11 +679,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/courses/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+        <state relative-caret-position="277">
+          <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/courses/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/courses/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#631#663#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/courses/course_video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="135" column="51" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="51" />
+          <folding>
+            <element signature="n#section#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/courses/course_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="82" column="59" lean-forward="true" selection-start-line="82" selection-start-column="59" selection-end-line="82" selection-end-column="59" />
         </state>
       </provider>
     </entry>
