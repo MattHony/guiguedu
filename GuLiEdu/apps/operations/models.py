@@ -24,7 +24,7 @@ class UserAsk(models.Model):
 class UserLove(models.Model):
     love_man = models.ForeignKey(UserProfile, verbose_name='收藏用户', on_delete=models.CASCADE)
     love_id = models.IntegerField(verbose_name='收藏id')
-    love_type = models.IntegerField(choices=((1, 'course'), (2, 'teacher'), (3, 'teacher')), verbose_name='收藏类别')
+    love_type = models.IntegerField(choices=((1, 'course'), (2, 'teacher'), (3, 'org')), verbose_name='收藏类别')
     love_status = models.BooleanField(default=False, verbose_name="收藏状态")
     add_time = models.DateTimeField(default=datetime.now, verbose_name='收藏时间')
 

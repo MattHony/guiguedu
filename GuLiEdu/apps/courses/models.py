@@ -14,13 +14,13 @@ class CourseInfo(models.Model):
     course_time = models.IntegerField(default=0, verbose_name="学习时长")
     learn_num = models.IntegerField(default=0, verbose_name="学习人数")
     level = models.CharField(choices=(('senior', '高级'), ("middle", '中级'), ('junior', '初级')),
-                             max_length=5, verbose_name='课程难度', default='junior')
+                             max_length=10, verbose_name='课程难度', default='junior')
     desc = models.CharField(max_length=200, verbose_name="机构简介")
     detail = models.TextField(verbose_name="机构详情")
     love_num = models.IntegerField(default=0, verbose_name="收藏数")
     click_num = models.IntegerField(default=0, verbose_name="访问量")
     category = models.CharField(choices=(('frontend', '前端开发'), ('backend', '后端开发')),
-                                max_length=5, verbose_name="课程类别")
+                                max_length=10, verbose_name="课程类别")
     course_notice = models.CharField(max_length=200, verbose_name='课程公告')
     course_need = models.CharField(max_length=100, verbose_name='课程须知')
     teacher_said = models.CharField(max_length=100, verbose_name='老师指导')

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block title %}公开课详情 - 谷粒教育{% endblock %}
 {% block content %}
     <section>
@@ -59,7 +60,7 @@
 						</ul>
 						<div class="btns">
 							<div class="btn colectgroupbtn"  id="jsLeftBtn">
-                                  收藏
+                                  {% if lovecourse %}取消收藏{% else %}收藏{% endif %}
                             </div>
                                 <div class="buy btn"><a style="color: white" href="course_video.html">开始学习</a></div>
 						</div>
@@ -80,7 +81,7 @@
                     </a>
 					<div class="btn  notlogin
 					     " data-favid="14" id="jsRightBtn">
-                         已收藏
+                         {% if loveorg %}取消收藏{% else %}收藏{% endif %}
                     </div>
 					<div class="clear">
 						<ul>
@@ -157,6 +158,28 @@
                 success:function (callback) {
                     if(callback.status == 'ok'){
                         $('#jsLeftBtn').text(callback.msg)
+                    }else{
+                        alert(callback.msg)
+                    }
+
+                }
+            })
+        })
+    });
+    $(function () {
+        $('#jsRightBtn').click(function () {
+            var loveid = {{ course.id }};
+            var lovetype = 1;
+            $.ajax({
+                type: 'GET',
+                url: '{% url 'operations:user_love' %}',
+                data:{
+                    lovetype: lovetype,
+                    loveid: loveid
+                },
+                success:function (callback) {
+                    if(callback.status == 'ok'){
+                        $('#jsRightBtn').text(callback.msg)
                     }else{
                         alert(callback.msg)
                     }
