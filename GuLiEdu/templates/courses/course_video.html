@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/guli/course/learn-less.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/aui.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/mooc.css' %}" />
-     <link rel="stylesheet" type="text/css"href="{% static 'css/guli/course/common-less.css' %}">
+    <link rel="stylesheet" type="text/css"href="{% static 'css/guli/course/common-less.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -67,8 +67,8 @@
             <div class="content">
                 <div class="mod-tab-menu">
                     <ul class="course-menu clearfix">
-                        <li><a class="ui-tabs-active active" id="learnOn"  href="course-video.html"><span>章节</span></a></li>
-                        <li><a id="commentOn" class="" href="course-comment.html"><span>评论</span></a></li>
+                        <li><a class="ui-tabs-active active" id="learnOn"  href="{% url 'courses:course_video' course.id %}"><span>章节</span></a></li>
+                        <li><a id="commentOn" class="" href="{% url 'courses:course_comment' course.id %}"><span>评论</span></a></li>
                     </ul>
                 </div>
                 <div id="notice" class="clearfix">
@@ -146,20 +146,15 @@
                             <div class="cp-tab-pannel js-comp-tab-pannel" data-pannel="course" style="display: block">
                                 <!-- img 200 x 112 -->
                                 <ul class="other-list">
-
+                                    {% for course1 in course_list %}
                                     <li class="curr">
-                                        <a href="course_detail.html" target="_blank">
-                                            <img src="../images/mysql.jpg" >
-                                            <span class="name autowrap">mysql高级</span>
+                                        <a href="{% url 'courses:course_detail' course1.id %}" target="_blank">
+                                            <img src="{{ MEDIA_URL }}{{ course1.image }}" >
+                                            <span class="name autowrap">{{ course1.name }}</span>
                                         </a>
                                     </li>
+                                    {% endfor %}
 
-                                    <li class="curr">
-                                        <a href="course-detail.html" target="_blank">
-                                            <img src="../images/oracle.jpg">
-                                            <span class="name autowrap">oracle全讲</span>
-                                        </a>
-                                    </li>
 
                                 </ul>
                             </div>

@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from .views import user_ask
 from .views import user_love
+from .views import user_comment
 
 urlpatterns = [
     url(r'^user_ask/$', user_ask, name='user_ask'),
     url(r'^user_love/$', user_love, name='user_love'),
+    url(r'^user_comment/$', user_comment, name='user_comment'),
 
 ]
 

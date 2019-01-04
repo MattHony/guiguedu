@@ -22,6 +22,8 @@ from .views import org_detail
 from .views import org_detail_course
 from .views import org_detail_desc
 from .views import org_detail_teacher
+from .views import teacher_list
+from .views import teacher_detail
 
 urlpatterns = [
     url(r'^org_list/$', org_list, name='org_list'),
@@ -29,5 +31,9 @@ urlpatterns = [
     url(r'^org_detail_course/(\d+)/$', org_detail_course, name='org_detail_course'),
     url(r'^org_detail_desc/(\d+)/$', org_detail_desc, name='org_detail_desc'),
     url(r'^org_detail_teacher/(\d+)/$', org_detail_teacher, name='org_detail_teacher'),
+
+    url(r'^teacher_list/$', teacher_list, name='teacher_list'),
+    url(r'^teacher_detail/(\d+)/$', teacher_detail, name='teacher_detail'),
+
 ]
 

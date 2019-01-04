@@ -24,3 +24,7 @@ class UserAskForm(forms.ModelForm):
         else:
             raise forms.ValidationError('输入的手机号码不合法')
 
+
+class UserCommentForm(forms.Form):
+    comment_course = forms.IntegerField(required=True)
+    comment_content = forms.CharField(required=True, min_length=1, max_length=300)
