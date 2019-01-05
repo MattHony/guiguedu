@@ -3,13 +3,14 @@ from django.contrib.auth import login
 from django.contrib.auth import logout
 
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import reverse
 from django.shortcuts import HttpResponse
 
 from users.models import UserProfile, EmailVerifyCode
-from .forms import UserForgetForm
+from .forms import UserForgetForm, UserChangeImageForm
 from .forms import UserRegisterForm
 from .forms import UserLoginForm
 from .forms import UserResetForm
@@ -171,3 +172,17 @@ def user_reset(request, code):
                     'user_reset_form': user_reset_form,
                     'code': code
                 })
+
+
+def user_info(request):
+    return render(request, 'users/usercenter_info.html')
+
+
+def user_changeimage(request):
+    # instance 用做对request.user修改 指明实例对象
+    user_changeimage_form = UserChangeImageForm(request.POST, request.FILES, instance=request.user)
+    if user_changeimage_form.is_valid():
+        user_changeimage_form.save(commit=True)
+        return JsonResponse({'status': 'ok'})
+    else:
+        return JsonResponse({'status': 'failed'})

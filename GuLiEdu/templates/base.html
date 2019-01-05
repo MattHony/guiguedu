@@ -41,7 +41,7 @@
                                         </dd>
                                     </dl>
                                     <div class="btn">
-                                        <a class="personcenter fl" href="usercenter-info.html">进入个人中心</a>
+                                        <a class="personcenter fl" href="{% url 'users:user_info' %}">进入个人中心</a>
                                         <a class="fr" href="{% url 'users:user_logout' %}">退出</a>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
             {% block middle %}
                 <div class="middle">
                     <div class="wp">
-                        <a href="index.html"><img class="fl" src="{% static 'images/logo1.png' %}"/></a>
+                        <a href="/"><img class="fl" src="{% static 'images/logo1.png' %}"/></a>
                         <div class="searchbox fr">
                             <div class="selectContainer fl">
                                 <span class="selectOption" id="jsSelectOption" data-value="course">
@@ -80,16 +80,16 @@
                     <div class="nav">
                         <div class="wp">
                             <ul>
-                                <li class="active" ><a href="index.html">首页</a></li>
-                                <li >
+                                <li {% if request.path == '/' %}class="active" {% endif %}><a href="/">首页</a></li>
+                                <li {% if request.path|slice:':9' == '/courses/' %}class="active" {% endif %}>
                                     <a href="{% url 'courses:course_list' %}">
                                         公开课<img class="hot" src="{% static 'images/nav_hot.png' %}">
                                     </a>
                                 </li>
-                                <li >
+                                <li {% if request.path|slice:':13' == '/orgs/teacher' %}class="active" {% endif %}>
                                     <a href="{% url 'orgs:teacher_list' %}">授课教师</a>
                                 </li>
-                                <li ><a href="{% url 'orgs:org_list' %}">授课机构</a></li>
+                                <li {% if request.path|slice:':9' == '/orgs/org' %}class="active" {% endif %}><a href="{% url 'orgs:org_list' %}">授课机构</a></li>
                             </ul>
                         </div>
                     </div>
@@ -106,8 +106,8 @@
 		<div class="footer">
 			<div class="wp">
 				<ul class="cont">
-					<li class="logo"><a href=""><img src="{% static 'images/logo1.png' %}"/></a></li>
-					<li class="code"><img src="../images/code.jpg"/><p class="center">扫描关注微信</p></li>
+					<li class="logo"><a href="/"><img src="{% static 'images/logo1.png' %}"/></a></li>
+					<li class="code"><img src="{% static 'images/code.jpg' %}"/><p class="center">扫描关注微信</p></li>
 					<li class="third"><img class="fl" src="{% static 'images/tell.png' %}"/><p class="tell">18058780002</p><p class="time">周一至周wu 9:00-19:00</p></li>
 				</ul>
 

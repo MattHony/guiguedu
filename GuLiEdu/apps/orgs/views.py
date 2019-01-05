@@ -55,6 +55,10 @@ def org_list(request):
 def org_detail(request, org_id):
     if org_id:
         org = OrgInfo.objects.filter(id=int(org_id))[0]
+
+        org.click_num += 1
+        org.save()
+
         return render(request, 'orgs/org_detail_homepage.html', {
             'org': org,
             'detail_type': 'home'
@@ -130,6 +134,9 @@ def teacher_detail(request, teacher_id):
         all_teachers = TeacherInfo.objects.all()
         teacher = TeacherInfo.objects.filter(id = int(teacher_id))[0]
         sort_teachers = all_teachers.order_by('-love_num')[:2]
+
+        teacher.click_num += 1
+        teacher.save()
 
         # lovecourse和loveorg 用于存储用户收藏的状态,在模板中
         # 根据这个状态来确定页面加载时,显示的是收藏还是取消收藏

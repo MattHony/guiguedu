@@ -3,6 +3,8 @@ from django.http import JsonResponse
 # Create your views here.
 from operations.forms import UserAskForm, UserCommentForm
 from operations.models import UserLove, UserComment
+from orgs.models import OrgInfo, TeacherInfo
+from courses.models import CourseInfo
 
 
 def user_ask(request):
@@ -30,6 +32,16 @@ def user_love(request):
     loveid = request.GET.get('loveid', '')
     lovetype = request.GET.get('lovetype', '')
     if loveid and lovetype:
+        # 根据传递的收藏类型,判断是什么对象
+        # 根据传递的收藏ID,判断收藏是哪一个对象
+        obj = None
+        if int(lovetype) == 1:
+            obj = OrgInfo.objects.filter(id=int(loveid))[0]
+        elif int(lovetype) == 2:
+            obj = CourseInfo.objects.filter(id=int(loveid))[0]
+        elif int(lovetype) == 3:
+            obj = TeacherInfo.objects.filter(id=int(loveid))[0]
+
         # 收藏的id和type同时存在,就去收藏表当中去查找有没有这个用户的收藏记录
         love = UserLove.objects.filter(love_id=str(loveid), love_type=str(lovetype), love_man=request.user)
         if love:
@@ -38,10 +50,15 @@ def user_love(request):
             if love[0].love_status:
                 love[0].love_status = False
                 love[0].save()
+                obj.love_num -= 1
+                obj.save()
+
                 return JsonResponse({'status': 'ok', 'msg': '收藏'})
             else:
                 love[0].love_status = True
                 love[0].save()
+                obj.love_num += 1
+                obj.save()
                 return JsonResponse({
                     'status': 'OK',
                     'msg': '取消收藏',
@@ -54,6 +71,8 @@ def user_love(request):
             a.love_type = int(lovetype)
             a.love_status = True
             a.save()
+            obj.love_num += 1
+            obj.save()
             return JsonResponse({
                 'status': 'OK',
                 'msg': '取消收藏',

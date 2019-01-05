@@ -1,5 +1,6 @@
 from django import forms
 from captcha.fields import CaptchaField
+from .models import UserProfile
 
 
 class UserRegisterForm(forms.Form):
@@ -37,3 +38,9 @@ class UserResetForm(forms.Form):
         'min_length': '密码至少3位',
         'max_length': '密码最多15位',
     })
+
+
+class UserChangeImageForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['image']

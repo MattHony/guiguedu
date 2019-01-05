@@ -3,6 +3,8 @@
     <words>
       <w>bootswatch</w>
       <w>btns</w>
+      <w>changeimage</w>
+      <w>changimage</w>
       <w>cityid</w>
       <w>cityinfo</w>
       <w>courseinfo</w>
@@ -12,8 +14,10 @@
       <w>guliedu</w>
       <w>lessioninfo</w>
       <w>lovecourse</w>
+      <w>loveid</w>
       <w>loveorg</w>
       <w>loveteacher</w>
+      <w>lovetype</w>
       <w>orginfo</w>
       <w>orgininfo</w>
       <w>orgs</w>

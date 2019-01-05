@@ -39,6 +39,9 @@ def course_detail(request, course_id):
         # 相关课程推荐 除去课程本身的course_id exclude()
         related_course = CourseInfo.objects.filter(category=course.category).exclude(id=int(course_id))[:2]
 
+        course.click_num += 1
+        course.save()
+
         # lovecourse和loveorg 用于存储用户收藏的状态,在模板中
         # 根据这个状态来确定页面加载时,显示的是收藏还是取消收藏
         lovecourse = False
@@ -71,6 +74,18 @@ def course_video(request, course_id):
             a.study_man = request.user
             a.study_course = course
             a.save()
+            course.study_num += 1
+            course.save()
+
+            # # 1:从学习课程的表当中查找当前这个人学习的所有课程
+            # usercourse_list = UserCourse.objects.filter(study_man=request.user)
+            # course_list = [usercourse.study_course for usercourse in usercourse_list]
+            # # 2: 通过拿到的所有课程,找到每个课程的机构
+            # org_list = list(set([course.orginfo for course in course_list]))
+            #
+            # if course.orginfo not in org_list:
+            #     course.orginfo.study_num += 1
+            #     course.orginfo.save()
 
             # 学过该课程同学还学过课程功能
             # 1: 从所有对象中获取到学习该课程的所有对象
