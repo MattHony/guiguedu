@@ -44,3 +44,15 @@ class UserChangeImageForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['image']
+
+
+class UserChangeInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['nick_name', 'birthday', 'address', 'phone', 'gender']
+
+
+class UserChangeEmailForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['email']

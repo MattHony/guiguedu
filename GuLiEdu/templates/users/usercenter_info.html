@@ -62,6 +62,42 @@
 	</div>
 {% endblock %}
 
+{% block myjs1 %}
+    <script>
+        $(function () {
+            $('#jsEditUserBtn').click(function () {
+                var nick_name = $('#nick_name').val();
+                var birthday = $('#birth_day').val();
+                var gender = $(':checked').val();
+                var address = $('#address').val();
+                var phone = $('#mobile').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'users:user_changeinfo' %}',
+                    data: {
+                        nick_name: nick_name,
+                        birthday: birthday,
+                        gender: gender,
+                        address: address,
+                        phone: phone,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                    },
+                    success:function (callback) {
+                        if(callback.status == 'ok'){
+                            alert(callback.msg);
+                            window.location.reload()
+                        }else {
+                            alert(callback.msg)
+                        }
+                    }
+
+                })
+
+            })
+
+        })
+    </script>
+{% endblock %}
 
 
 
