@@ -27,9 +27,9 @@
         <div class="wp list personal_list">
         <div class="left">
             <ul>
-                <li class="active2"><a href="usercenter-info.html">个人资料</a></li>
-                <li ><a href="usercenter-mycourse.html">我的课程</a></li>
-                <li ><a href="usercenter-fav-course.html">我的收藏</a></li>
+                <li class="active2"><a href="{% url 'users:user_info' %}">个人资料</a></li>
+                <li ><a href="{% url 'users:user_course' %}">我的课程</a></li>
+                <li ><a href="{% url 'users:user_loveorg' %}">我的收藏</a></li>
                 <li ><a href="usercenter-message.html" style="position: relative;">我的消息</a></li>
             </ul>
         </div>
@@ -98,6 +98,7 @@
         $(function () {
             $('#jsChangeEmailCodeBt').click(function () {
                 var email = $('#jsChangeEmail').val();
+                var code = $('#jsChangeEmailCode').val();
                 $.ajax({
                     type: 'POST',
                     url: '{% url 'users:user_changeemail' %}',
@@ -109,7 +110,9 @@
                     success:function(callback){
                         if(callback.status == 'ok'){
                             alert(callback.msg)
-
+                            window.location.href = '{% url 'users:user_login' %}'
+                        }else {
+                            alert(callback.msg);
                         }
                     }
                 })

@@ -22,7 +22,8 @@ from .views import user_forget
 from .views import user_reset
 from .views import user_info
 from .views import user_changeimage, user_changeinfo
-from .views import user_changeemail
+from .views import user_changeemail, user_resetemail
+from .views import user_course, user_loveorg
 
 urlpatterns = [
     url(r'^user_register/$', user_register, name='user_register'),
@@ -37,4 +38,7 @@ urlpatterns = [
     url(r'^user_changeimage/$', user_changeimage, name='user_changeimage'),
     url(r'^user_changeinfo/$', user_changeinfo, name='user_changeinfo'),
     url(r'^user_changeemail/$', user_changeemail, name='user_changeemail'),
+    url(r'^user_resetemail/$', user_resetemail, name='user_resetemail'),
+    url(r'^user_course', user_course, name='user_course'),
+    url(r'^user_loveorg', user_loveorg, name='user_loveorg'),
 ]

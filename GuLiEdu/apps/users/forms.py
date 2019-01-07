@@ -56,3 +56,7 @@ class UserChangeEmailForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['email']
+
+
+class UserResetEmailForm(forms.Form):
+    pass

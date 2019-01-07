@@ -11,11 +11,13 @@ from django.shortcuts import redirect
 from django.shortcuts import reverse
 from django.shortcuts import HttpResponse
 
+from operations.models import UserLove
+from orgs.models import OrgInfo
 from users.models import UserProfile, EmailVerifyCode
 from .forms import UserForgetForm, UserChangeImageForm, UserChangeEmailForm
 from .forms import UserRegisterForm
 from .forms import UserLoginForm
-from .forms import UserResetForm
+from .forms import UserResetForm, UserResetEmailForm
 from .forms import UserChangeInfoForm
 
 from tools.send_email_tool import send_email_code
@@ -220,8 +222,8 @@ def user_changeemail(request):
                 # 判断当前时间和最近发送的验证码添加时间之差
                 if (datetime.now()-email_ver.add_time).seconds >= 60:
                     send_email_code(email, 3)
-                    # 清除之前已经存在的验证码
-                    email_ver.delete()
+                    # # 清除之前已经存在的验证码
+                    # email_ver.delete()
                     return JsonResponse({'status': 'ok', 'msg': '请尽快到邮箱中获取验证码'})
                 else:
                     return JsonResponse({'status': 'fail', 'msg': '请不要重复发送验证码'})
@@ -230,3 +232,43 @@ def user_changeemail(request):
                 return JsonResponse({'status': 'ok', 'msg': '请尽快到邮箱中获取验证码'})
     else:
         return JsonResponse({'status': 'fail', 'msg': '您输入的邮箱有误'})
+
+
+def user_resetemail(request):
+    user_resetemail_form = UserResetEmailForm(request.POST)
+    if user_resetemail_form.is_valid():
+        email = user_resetemail_form.cleaned_data['email']
+        code = user_resetemail_form.cleaned_data['code']
+
+        email_ver_list = EmailVerifyCode.objects.filter(email=email, code=code)
+        if email_ver_list:
+            email_ver = email_ver_list[0]
+            if (datetime.now()-email_ver.add_time).seconds < 60:
+                request.user.username = email
+                request.user.email = email
+                request.user.save()
+                return JsonResponse({'status': 'ok', 'msg': '邮箱修改成功'})
+            else:
+                return JsonResponse({'status': 'fail', 'msg': '验证码失效.请重新发送验证码'})
+        else:
+            return JsonResponse({'status': 'fail', 'msg': '邮箱或者验证码有误'})
+    else:
+        return JsonResponse({'status': 'fail', 'msg': '邮箱或者验证码不合法'})
+
+
+def user_course(request):
+    usercourse_list = request.user.usercourse_set.all()
+    course_list = [usercourse.study_course for usercourse in usercourse_list]
+    return render(request, 'users/usercenter_mycourse.html', {
+        'course_list': course_list
+    })
+
+
+def user_loveorg(request):
+    # userloveorg_list = request.user.userlove.all().filter(love_type=1)
+    userloveorg_list = UserLove.objects.filter(love_man=request.user, love_type=1)
+    org_ids = [userloveorg.love_id for userloveorg in userloveorg_list]
+    org_list = OrgInfo.objects.filter(id__in=org_ids)
+    return render(request, 'users/usercenter_fav_org.html', {
+        'org_list': org_list,
+    })

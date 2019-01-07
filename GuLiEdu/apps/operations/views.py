@@ -94,3 +94,7 @@ def user_comment(request):
         return JsonResponse({'status': 'ok', 'msg': '评论成功'})
     else:
         return JsonResponse({'status': 'fail', 'msg': '评论失败'})
+
+
+def user_deletelove(request):
+    pass
