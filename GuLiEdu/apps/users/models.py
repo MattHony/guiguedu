@@ -21,6 +21,12 @@ class UserProfile(AbstractUser):
     def __str__(self):
         return self.username
 
+    # 定义一个个人用户的方法
+    def get_msg_counter(self):
+        from operations.models import UserMessage
+        counter = UserMessage.objects.filter(message_man=self.id, message_status=False).count()
+        return counter
+
     class Meta:
         verbose_name = '用户信息'
         verbose_name_plural = verbose_name

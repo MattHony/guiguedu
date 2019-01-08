@@ -12,7 +12,7 @@ from django.shortcuts import reverse
 from django.shortcuts import HttpResponse
 
 from courses.models import CourseInfo
-from operations.models import UserLove
+from operations.models import UserLove, UserMessage
 from orgs.models import OrgInfo, TeacherInfo
 from users.models import UserProfile, EmailVerifyCode
 from .forms import UserForgetForm, UserChangeImageForm, UserChangeEmailForm
@@ -77,6 +77,11 @@ def user_login(request):
             if user:
                 if user.is_start:
                     login(request, user)
+                    # 当登录成功,刷新一条消息
+                    a = UserMessage()
+                    a.message_man = user.id
+                    a.message_content = '欢迎登陆'
+                    a.save()
                     return redirect(reverse('index'))
                 else:
                     return HttpResponse('请前往您的邮箱进行激活,否则无法登录')
@@ -291,3 +296,20 @@ def user_lovecourse(request):
     return render(request, 'users/usercenter_fav_course.html', {
         'course_list': course_list,
     })
+
+
+def user_message(request):
+    msg_list = UserMessage.objects.filter(message_man=request.user.id)
+    return render(request, 'users/usercenter_message.html', {
+        'msg_list': msg_list,
+
+    })
+
+
+def user_deletemessage(request):
+    # 获取delete_id 参数,拿不到则给空值
+    delete_id = request.GET.get('delete-id', '')
+    if delete_id:
+        msg = UserMessage.objects.filter(id = int(delete_id))[0]
+        msg.message_status = True
+        msg.save()
