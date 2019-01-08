@@ -11,8 +11,9 @@ from django.shortcuts import redirect
 from django.shortcuts import reverse
 from django.shortcuts import HttpResponse
 
+from courses.models import CourseInfo
 from operations.models import UserLove
-from orgs.models import OrgInfo
+from orgs.models import OrgInfo, TeacherInfo
 from users.models import UserProfile, EmailVerifyCode
 from .forms import UserForgetForm, UserChangeImageForm, UserChangeEmailForm
 from .forms import UserRegisterForm
@@ -266,9 +267,27 @@ def user_course(request):
 
 def user_loveorg(request):
     # userloveorg_list = request.user.userlove.all().filter(love_type=1)
-    userloveorg_list = UserLove.objects.filter(love_man=request.user, love_type=1)
+    userloveorg_list = UserLove.objects.filter(love_man=request.user, love_type=1, love_status=True)
     org_ids = [userloveorg.love_id for userloveorg in userloveorg_list]
     org_list = OrgInfo.objects.filter(id__in=org_ids)
     return render(request, 'users/usercenter_fav_org.html', {
         'org_list': org_list,
+    })
+
+
+def user_loveteacher(request):
+    userloveteacher_list = UserLove.objects.filter(love_man=request.user, love_type=3, love_status=True)
+    teacher_ids = [userloveteacher.love_id for userloveteacher in userloveteacher_list]
+    teacher_list = TeacherInfo.objects.filter(id__in=teacher_ids)
+    return render(request, 'users/usercenter_fav_teacher.html', {
+        'teacher_list': teacher_list,
+    })
+
+
+def user_lovecourse(request):
+    userlovecourse_list = UserLove.objects.filter(love_man=request.user, love_type=3, love_status=True)
+    course_ids = [userloveteacher.love_id for userloveteacher in userlovecourse_list]
+    course_list = CourseInfo.objects.filter(id__in=course_ids)
+    return render(request, 'users/usercenter_fav_course.html', {
+        'course_list': course_list,
     })

@@ -14,8 +14,8 @@
                 <div class="head">
                     <ul class="tab_header messagehead">
                         <li class="active"><a href="{% url 'users:user_loveorg' %}">课程机构</a> </li>
-                        <li><a href="usercenter-fav-teacher.html">授课教师 </a></li>
-                        <li><a href="usercenter-fav-course.html">公开课程</a></li>
+                        <li><a href="{% url 'users:user_loveteacher' %}">授课教师 </a></li>
+                        <li><a href="{% url 'users:user_lovecourse' %}">公开课程</a></li>
                     </ul>
                 </div>
                 <div class="messagelist">
@@ -55,16 +55,26 @@
             $('.delete').click(function () {
             {# prop()用来取元素自带属性的值或者设置值,attr用来去取元素自定义的属性对的值或者设置值#}
                 var loveid =$(this).attr('data_favis');
+                var lovetype = 1;
+                var obj = $(this);
                 $.ajax({
                     type: 'GET',
                     url: '{% url 'operations: user_deletelove' %}',
                     data: {
-
+                        loveid: loveid,
+                        lovetype: lovetype,
+                    },
+                    success:function(callback) {
+                        if(callback.status=='ok'){
+                            alert(callback.msg);
+                            obj.parents('.des').remove();
+                            {#obj.parents('.des') 拿到点击对象的祖先节点,传入的选择器#}
+                        }else{
+                            alert(callback.msg)
+                        }
                     }
                 })
-
             })
-
         })
     </script>
 {% endblock %}

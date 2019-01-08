@@ -97,4 +97,16 @@ def user_comment(request):
 
 
 def user_deletelove(request):
-    pass
+    loveid = request.GET.get('loveid', '')
+    lovetype = request.GET.get('lovetype', '')
+    if loveid and lovetype:
+        love = UserLove.objects.filter(love_id=int(loveid), love_type=int(lovetype), love_man=request.user, love_status=True)
+        if love:
+            love[0].love_status = False
+            love[0].save()
+            return JsonResponse({'status': 'ok', 'msg': '取消成功'})
+        else:
+            pass
+    else:
+        return JsonResponse({'status': 'ok', 'msg': '取消失败'})
+
