@@ -10,6 +10,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import reverse
 from django.shortcuts import HttpResponse
+from django.views.generic import View
 
 from courses.models import CourseInfo
 from operations.models import UserLove, UserMessage
@@ -26,27 +27,41 @@ from tools.send_email_tool import send_email_code
 # Create your views here.
 
 
-def index(request):
-    all_banners = BannerInfo.objects.all().order_by('-add_time')[:5]
-    banner_courses = CourseInfo.objects.filter(is_banner=True)[:3]
-    all_courses = CourseInfo.objects.filter(is_banner=True)[:6]
-    all_orgs = OrgInfo.objects.all()[:15]
-    return render(request, 'index.html', {
-        'all_banners': all_banners,
-        'banner_courses': banner_courses,
-        'all_courses': all_courses,
-        'all_orgs': all_orgs,
-    })
+class IndexView(View):
+    def get(self, request):
+        all_banners = BannerInfo.objects.all().order_by('-add_time')[:5]
+        banner_courses = CourseInfo.objects.filter(is_banner=True)[:3]
+        all_courses = CourseInfo.objects.filter(is_banner=True)[:6]
+        all_orgs = OrgInfo.objects.all()[:15]
+        return render(request, 'index.html', {
+            'all_banners': all_banners,
+            'banner_courses': banner_courses,
+            'all_courses': all_courses,
+            'all_orgs': all_orgs,
+        })
+
+# def index(request):
+#     all_banners = BannerInfo.objects.all().order_by('-add_time')[:5]
+#     banner_courses = CourseInfo.objects.filter(is_banner=True)[:3]
+#     all_courses = CourseInfo.objects.filter(is_banner=True)[:6]
+#     all_orgs = OrgInfo.objects.all()[:15]
+#     return render(request, 'index.html', {
+#         'all_banners': all_banners,
+#         'banner_courses': banner_courses,
+#         'all_courses': all_courses,
+#         'all_orgs': all_orgs,
+#     })
 
 
-def user_register(request):
-    if request.method == 'GET':
+class UserRegisterView(View):
+    def get(self, request):
         # 引入form类,只是为了使用验证码
         user_register_form = UserRegisterForm()
         return render(request, 'users/register.html', {
             'user_register_form': user_register_form
         })
-    else:
+
+    def post(self, request):
         user_register_form = UserRegisterForm(request.POST)
         if user_register_form.is_valid():
             email = user_register_form.cleaned_data['email']
@@ -71,12 +86,45 @@ def user_register(request):
             return render(request, 'users/register.html', {
                 'user_register_form': user_register_form
             })
+# def user_register(request):
+#     if request.method == 'GET':
+#         # 引入form类,只是为了使用验证码
+#         user_register_form = UserRegisterForm()
+#         return render(request, 'users/register.html', {
+#             'user_register_form': user_register_form
+#         })
+#     else:
+#         user_register_form = UserRegisterForm(request.POST)
+#         if user_register_form.is_valid():
+#             email = user_register_form.cleaned_data['email']
+#             password = user_register_form.cleaned_data['password']
+#
+#             user_list = UserProfile.objects.filter(Q(username=email) | Q(email=email))
+#             if user_list:
+#                 return render(request, 'users/register.html', {
+#                     'msg': '用户已经存在',
+#                 })
+#             else:
+#                 a = UserProfile()
+#                 a.username = email
+#                 a.set_password(password)
+#                 a.email = email
+#                 a.save()
+#                 # 激活邮箱
+#                 send_email_code(email, 1)
+#                 return HttpResponse('请尽快前往您的邮箱进行激活,否则无法登录')
+#                 # return redirect(reverse('index'))
+#         else:
+#             return render(request, 'users/register.html', {
+#                 'user_register_form': user_register_form
+#             })
 
 
-def user_login(request):
-    if request.method == 'GET':
+class UserLoginView(View):
+    def get(self, request):
         return render(request, 'users/login.html')
-    else:
+
+    def post(self, request):
         user_login_form = UserLoginForm(request.POST)
         if user_login_form.is_valid():
             email = user_login_form.cleaned_data['email']
@@ -107,11 +155,49 @@ def user_login(request):
             })
 
 
-def user_logout(request):
-    # if request.method == 'GET':
-    # return render(request, 'logout.html')
-    logout(request)
-    return redirect(reverse('index'))
+# def user_login(request):
+#     if request.method == 'GET':
+#         return render(request, 'users/login.html')
+#     else:
+#         user_login_form = UserLoginForm(request.POST)
+#         if user_login_form.is_valid():
+#             email = user_login_form.cleaned_data['email']
+#             password = user_login_form.cleaned_data['password']
+#
+#             user = authenticate(username=email, password=password)
+#             if user:
+#                 if user.is_start:
+#                     login(request, user)
+#                     # 当登录成功,刷新一条消息
+#                     a = UserMessage()
+#                     a.message_man = user.id
+#                     a.message_content = '欢迎登陆'
+#                     a.save()
+#                     url = request.COOKIES.get('url', '/')
+#                     ret = redirect(url)
+#                     ret.delete_cookie('url')
+#                     return ret
+#                 else:
+#                     return HttpResponse('请前往您的邮箱进行激活,否则无法登录')
+#             else:
+#                 return render(request, 'users/login.html', {
+#                     'msg': '邮箱或密码错误'
+#                 })
+#         else:
+#             return render(request, 'users/login.html', {
+#                 'user_login_form': user_login_form
+#             })
+
+class UserLogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect(reverse('index'))
+
+# def user_logout(request):
+#     # if request.method == 'GET':
+#     # return render(request, 'logout.html')
+#     logout(request)
+#     return redirect(reverse('index'))
 
 
 def user_active(request, code):

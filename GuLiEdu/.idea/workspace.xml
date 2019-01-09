@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8fc50ee2-845f-457a-b55a-794cf042a5de" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tools/decorators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/courses/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/courses/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orgs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orgs/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/courses/course_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courses/course_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/orgs/org_detail_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/orgs/org_detail_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/orgs/org_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/orgs/org_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/orgs/teachers_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/orgs/teachers_list.html" afterDir="false" />
-    </list>
+    <list default="true" id="8fc50ee2-845f-457a-b55a-794cf042a5de" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,10 +59,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/courses/migrations/0004_courseinfo_is_banner.py">
+        <entry file="file://$PROJECT_DIR$/apps/courses/migrations/0003_auto_20181222_0958.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+            <state relative-caret-position="247">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -161,8 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/register.html" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/GuLiEdu/settings.py" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/forgetpwd.html" />
@@ -212,6 +197,8 @@
         <option value="$PROJECT_DIR$/templates/orgs/org_detail_base.html" />
         <option value="$PROJECT_DIR$/tools/decorators.py" />
         <option value="$PROJECT_DIR$/apps/users/views.py" />
+        <option value="$PROJECT_DIR$/apps/courses/migrations/0004_courseinfo_is_banner.py" />
+        <option value="$PROJECT_DIR$/apps/courses/migrations/0003_auto_20181222_0958.py" />
       </list>
     </option>
   </component>
@@ -247,13 +234,6 @@
               <item name="GuLiEdu" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="courses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GuLiEdu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GuLiEdu" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="courses" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GuLiEdu" type="b2602c69:ProjectViewProjectNode" />
@@ -466,7 +446,7 @@
       <workItem from="1546565731130" duration="19864000" />
       <workItem from="1546602658668" duration="28862000" />
       <workItem from="1546830619035" duration="10974000" />
-      <workItem from="1546927898478" duration="21063000" />
+      <workItem from="1546927898478" duration="21323000" />
     </task>
     <servers />
   </component>
@@ -476,13 +456,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263319000" />
+    <option name="totallyTimeSpent" value="263579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12769353" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1660016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -497,7 +476,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="11" weight="0.32954547" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.32736155" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.32736155" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32899022" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32954547" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -512,9 +491,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/media/course/js高级.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/media/teacher/1914092628.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -849,6 +825,13 @@
     <entry file="file://$PROJECT_DIR$/apps/users/migrations/0004_auto_20190105_1856.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/courses/migrations/0004_courseinfo_is_banner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -859,10 +842,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/courses/migrations/0004_courseinfo_is_banner.py">
+    <entry file="file://$PROJECT_DIR$/apps/courses/migrations/0003_auto_20181222_0958.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+        <state relative-caret-position="247">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>

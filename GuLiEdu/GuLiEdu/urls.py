@@ -20,7 +20,7 @@ from django.urls import path, include
 
 # xadmin
 import xadmin
-from users.views import index
+from users.views import IndexView
 # xadmin.autodiscover()
 
 
@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^courses/', include(('courses.urls', 'courses'), namespace='courses')),
     url(r'^operations/', include(('operations.urls', 'operations'), namespace='operations')),
     url(r'^orgs/', include(('orgs.urls', 'orgs'), namespace='orgs')),
-    url(r'^$', index, name='index'),
+    url(r'^$', IndexView.as_view(), name='index'),
     url(r'^captcha/', include('captcha.urls')),
 ]
 
