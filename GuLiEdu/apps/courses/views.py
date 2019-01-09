@@ -1,6 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger
 from django.core.paginator import EmptyPage
+from django.db.models import Q
 from django.shortcuts import render
+from tools.decorators import login_decorator
 
 # Create your views here.
 from courses.models import CourseInfo
@@ -10,6 +13,13 @@ from operations.models import UserLove, UserCourse
 def course_list(request):
     all_courses = CourseInfo.objects.all()
     recommend_courses = all_courses.order_by('-add_time')[:3]
+
+    # 全局搜索功能的过滤
+    keyword = request.GET.get('keyword', '')
+    if keyword:
+        # 关键字搜索 不区分大小写
+        all_courses = all_courses.filter(
+            Q(name_icontains=keyword) | Q(desc__icontains=keyword | Q(detail__icontains=keyword)))
 
     sort = request.GET.get('sort', '')
     if sort:
@@ -30,6 +40,7 @@ def course_list(request):
         'pages': pages,
         "recommend_courses": recommend_courses,
         'sort': sort,
+        'keyword': keyword,
     })
 
 
@@ -63,6 +74,8 @@ def course_detail(request, course_id):
         })
 
 
+# @login_required(login_url='/users/user_login/')
+@login_decorator
 def course_video(request, course_id):
     if course_id:
         course = CourseInfo.objects.filter(id=int(course_id))[0]

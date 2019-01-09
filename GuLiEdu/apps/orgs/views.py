@@ -1,6 +1,7 @@
 from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import render
 
 from operations.models import UserLove
@@ -15,6 +16,11 @@ def org_list(request):
     all_cities = CityInfo.objects.all()
     sort_orgs = all_orgs.order_by('-love_num')[:3]
 
+    # 全局搜索功能的过滤
+    keyword = request.GET.get('keyword', '')
+    if keyword:
+        # 关键字搜索 不区分大小写
+        all_orgs = all_orgs.filter(Q(name_icontains=keyword)|Q(desc__icontains=keyword|Q(detail__icontains=keyword)))
     # 联合筛选
     # 按照机构类别进行过滤筛选
     cate = request.GET.get('cate', '')
@@ -49,6 +55,7 @@ def org_list(request):
         'cate': cate,
         'cityid': cityid,
         'sort': sort,
+        'keyword': keyword,
     })
 
 
@@ -108,6 +115,12 @@ def teacher_list(request):
     all_teachers = TeacherInfo.objects.all()
     sort_teachers = all_teachers.order_by('-love_num')[:2]
 
+    # 全局搜索功能的过滤
+    keyword = request.GET.get('keyword', '')
+    if keyword:
+        # 关键字搜索 不区分大小写
+        all_teachers = all_teachers.filter(name_icontains=keyword)
+
     sort = request.GET.get('sort', '')
     if sort:
         all_teachers = all_teachers.order_by('-'+sort)
@@ -125,7 +138,8 @@ def teacher_list(request):
         'all_teachers': all_teachers,
         'sort_teachers': sort_teachers,
         'pages': pages,
-        'sort': sort
+        'sort': sort,
+        'keyword': keyword,
     })
 
 

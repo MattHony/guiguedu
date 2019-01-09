@@ -20,4 +20,12 @@ class Migration(migrations.Migration):
             name='level',
             field=models.CharField(choices=[('senior', '高级'), ('middle', '中级'), ('junior', '初级')], default='junior', max_length=10, verbose_name='课程难度'),
         ),
+
+        migrations.AddField(
+            model_name='courseinfo',
+            name='is_banner',
+            field=models.BooleanField(default=False, verbose_name='是否轮播'),
+        ),
+
+
     ]

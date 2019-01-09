@@ -14,7 +14,7 @@ from django.shortcuts import HttpResponse
 from courses.models import CourseInfo
 from operations.models import UserLove, UserMessage
 from orgs.models import OrgInfo, TeacherInfo
-from users.models import UserProfile, EmailVerifyCode
+from users.models import UserProfile, EmailVerifyCode, BannerInfo
 from .forms import UserForgetForm, UserChangeImageForm, UserChangeEmailForm
 from .forms import UserRegisterForm
 from .forms import UserLoginForm
@@ -27,7 +27,16 @@ from tools.send_email_tool import send_email_code
 
 
 def index(request):
-    return render(request, 'index.html')
+    all_banners = BannerInfo.objects.all().order_by('-add_time')[:5]
+    banner_courses = CourseInfo.objects.filter(is_banner=True)[:3]
+    all_courses = CourseInfo.objects.filter(is_banner=True)[:6]
+    all_orgs = OrgInfo.objects.all()[:15]
+    return render(request, 'index.html', {
+        'all_banners': all_banners,
+        'banner_courses': banner_courses,
+        'all_courses': all_courses,
+        'all_orgs': all_orgs,
+    })
 
 
 def user_register(request):
@@ -82,7 +91,10 @@ def user_login(request):
                     a.message_man = user.id
                     a.message_content = '欢迎登陆'
                     a.save()
-                    return redirect(reverse('index'))
+                    url = request.COOKIES.get('url', '/')
+                    ret = redirect(url)
+                    ret.delete_cookie('url')
+                    return ret
                 else:
                     return HttpResponse('请前往您的邮箱进行激活,否则无法登录')
             else:
