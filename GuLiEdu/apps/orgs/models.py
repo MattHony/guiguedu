@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from django.db import models
+from DjangoUeditor.models import UEditorField
+# from DjangoUeditor.models import UEditorField
 
 # Create your models here.
 
@@ -24,7 +26,8 @@ class OrgInfo(models.Model):
     learn_num = models.IntegerField(default=0, verbose_name="学习人数")
     address = models.CharField(max_length=200, verbose_name="机构地址")
     desc = models.CharField(max_length=200, verbose_name="机构简介")
-    detail = models.TextField(verbose_name="机构详情")
+    detail = UEditorField(verbose_name='机构详情', width=700, height=400, toolbars='full', imagePath='ueditor/images/',
+                          filePath='ueditor/files/', upload_settings={'imageMaxSizing': 1024000}, default='')
     love_num = models.IntegerField(default=0, verbose_name="收藏数")
     click_num = models.IntegerField(default=0, verbose_name="访问量")
     category = models.CharField(choices=(('train_org', '培训机构'), ('colleges', '高校'),

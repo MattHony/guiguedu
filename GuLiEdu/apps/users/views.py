@@ -220,13 +220,14 @@ def user_active(request, code):
         pass
 
 
-def user_forget(request):
-    if request.method == 'GET':
+class UserForgetView(View):
+    def get(self, request):
         user_forget_form = UserForgetForm()
         return render(request, 'users/forgetpwd.html', {
             'user_forget_form': user_forget_form
         })
-    else:
+
+    def post(self, request):
         user_forget_form = UserForgetForm(request.POST)
         if user_forget_form.is_valid():
             email = user_forget_form.cleaned_data['email']
@@ -242,6 +243,28 @@ def user_forget(request):
             return render(request, 'users/forgetpwd.html', {
                 'user_forget_form': user_forget_form
             })
+# def user_forget(request):
+#     if request.method == 'GET':
+#         user_forget_form = UserForgetForm()
+#         return render(request, 'users/forgetpwd.html', {
+#             'user_forget_form': user_forget_form
+#         })
+#     else:
+#         user_forget_form = UserForgetForm(request.POST)
+#         if user_forget_form.is_valid():
+#             email = user_forget_form.cleaned_data['email']
+#             user_list = UserProfile.objects.filter(email=email)
+#             if user_list:
+#                 send_email_code(email, 2)
+#                 return HttpResponse('请尽快去您的邮箱重置密码')
+#             else:
+#                 return render(request, 'users/forgetpwd.html', {
+#                     'msg': '用户不存在'
+#                 })
+#         else:
+#             return render(request, 'users/forgetpwd.html', {
+#                 'user_forget_form': user_forget_form
+#             })
 
 
 # 忘记密码 传入code参数 多次使用验证码进行验证
@@ -411,3 +434,11 @@ def user_deletemessage(request):
         msg = UserMessage.objects.filter(id = int(delete_id))[0]
         msg.message_status = True
         msg.save()
+
+
+def handler_404(request):
+    return render(request, 'handler_404.html')
+
+
+def handler_500(request):
+    return render(request, 'handler_500.html')

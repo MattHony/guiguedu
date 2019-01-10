@@ -37,5 +37,9 @@ urlpatterns = [
     url(r'^orgs/', include(('orgs.urls', 'orgs'), namespace='orgs')),
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^captcha/', include('captcha.urls')),
+
+    url(r'^ueditor/', include('DjangoUeditor.urls')),
 ]
 
+handler404 = 'users.views.handler_404'
+handler500 = 'users.views.handler_500'

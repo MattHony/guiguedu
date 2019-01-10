@@ -18,7 +18,7 @@ from .views import UserRegisterView
 from .views import UserLoginView
 from .views import UserLogoutView
 from .views import user_active
-from .views import user_forget
+from .views import UserForgetView
 from .views import user_reset
 from .views import user_info
 from .views import user_changeimage, user_changeinfo
@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^user_logout/$', UserLogoutView.as_view(), name='user_logout'),
     url(r'^user_active/(\w+)/$', user_active, name='user_active'),
 
-    url(r'^user_forget/$', user_forget, name='user_forget'),
+    url(r'^user_forget/$', UserForgetView.as_view(), name='user_forget'),
     url(r'^user_reset/(\w+)/$', user_reset, name='user_reset'),
 
     url(r'^user_info/$', user_info, name='user_info'),
@@ -41,11 +41,11 @@ urlpatterns = [
     url(r'^user_changeinfo/$', user_changeinfo, name='user_changeinfo'),
     url(r'^user_changeemail/$', user_changeemail, name='user_changeemail'),
     url(r'^user_resetemail/$', user_resetemail, name='user_resetemail'),
-    url(r'^user_course', user_course, name='user_course'),
-    url(r'^user_loveorg', user_loveorg, name='user_loveorg'),
-    url(r'^user_loveteacher', user_loveteacher, name='user_loveteacher'),
-    url(r'^user_lovecourse', user_lovecourse, name='user_lovecourse'),
+    url(r'^user_course/$', user_course, name='user_course'),
+    url(r'^user_loveorg/$', user_loveorg, name='user_loveorg'),
+    url(r'^user_loveteacher/$', user_loveteacher, name='user_loveteacher'),
+    url(r'^user_lovecourse/$', user_lovecourse, name='user_lovecourse'),
 
-    url(r'^user_message', user_message, name='user_message'),
-    url(r'^user_deletemessage', user_deletemessage, name='user_deletemessage'),
+    url(r'^user_message/$', user_message, name='user_message'),
+    url(r'^user_deletemessage/$', user_deletemessage, name='user_deletemessage'),
 ]

@@ -27,8 +27,11 @@ SECRET_KEY = 'gxj_%c@4+&v1dfc=vzb)&1jbgf(zz%=_6p@syy^&s$e+7$^s-v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
+
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'reversion',
     'captcha',
+    'DjangoUeditor',
 ]
 
 # 继承关系 解决冲突

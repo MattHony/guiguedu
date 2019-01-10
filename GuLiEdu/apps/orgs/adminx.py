@@ -12,6 +12,7 @@ class OrgInfoXadmin(object):
     list_display = ['image', 'name', 'course_num', 'learn_num', 'love_num', 'click_num', 'category', 'cityinfo',
                     'add_time']
     model_icon = 'fa fa-tag'
+    style_fields = {'detail': 'ueditor'}
 
 
 class TeacherInfoXadmin(object):
