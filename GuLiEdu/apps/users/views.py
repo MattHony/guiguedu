@@ -306,8 +306,9 @@ def user_reset(request, code):
                 })
 
 
-def user_info(request):
-    return render(request, 'users/usercenter_info.html')
+class UserInfoView(View):
+    def get(self, request):
+        return render(request, 'users/usercenter_info.html')
 
 
 def user_changeimage(request):

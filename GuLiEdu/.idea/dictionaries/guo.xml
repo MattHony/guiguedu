@@ -12,6 +12,7 @@
       <w>courseinfo</w>
       <w>csrfmiddlewaretoken</w>
       <w>deletelove</w>
+      <w>deletemessage</w>
       <w>forgetpwd</w>
       <w>futbol</w>
       <w>guliedu</w>
@@ -26,6 +27,7 @@
       <w>orgs</w>
       <w>pagenum</w>
       <w>qwertyuiopasdfghkjlzcxvbbnm</w>
+      <w>resetemail</w>
       <w>smtp</w>
       <w>teacherinfo</w>
       <w>ueditor</w>

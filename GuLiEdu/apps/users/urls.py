@@ -20,7 +20,7 @@ from .views import UserLogoutView
 from .views import user_active
 from .views import UserForgetView
 from .views import user_reset
-from .views import user_info
+from .views import UserInfoView
 from .views import user_changeimage, user_changeinfo
 from .views import user_changeemail, user_resetemail
 from .views import user_course, user_loveorg
@@ -36,7 +36,7 @@ urlpatterns = [
     url(r'^user_forget/$', UserForgetView.as_view(), name='user_forget'),
     url(r'^user_reset/(\w+)/$', user_reset, name='user_reset'),
 
-    url(r'^user_info/$', user_info, name='user_info'),
+    url(r'^user_info/$', UserInfoView.as_view(), name='user_info'),
     url(r'^user_changeimage/$', user_changeimage, name='user_changeimage'),
     url(r'^user_changeinfo/$', user_changeinfo, name='user_changeinfo'),
     url(r'^user_changeemail/$', user_changeemail, name='user_changeemail'),
